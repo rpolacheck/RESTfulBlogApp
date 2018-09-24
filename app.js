@@ -4,18 +4,10 @@ bodyParser  = require("body-parser"),
 app         = express();
 
 // App Config
-var url = "mongodb://localhost/restful_blog_app";
-mongoose.connect(url, { useNewUrlParser: true }, function(err, db){
-  if(err){
-      console.log(err);
-  }  else {
-      console.log('connected to ' + url);
-      db.close();
-  }
-});
+
 app.set("view engine", "ejs");
 app.use(express.static("public"));
-app.use(bodyParser.urlencoded({ extended: true}));
+app.use(bodyParser.urlencoded({extended: true}));
 
 // Mongoose/Model Config
 var blogSchema = new mongoose.Schema({
@@ -42,7 +34,6 @@ app.get("/blogs", function(req, res){
            res.render("index", {blogs: blogs});
        }
     });
-   res.render("index"); 
 });
 
 
