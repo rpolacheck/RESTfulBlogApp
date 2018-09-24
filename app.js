@@ -4,7 +4,7 @@ bodyParser  = require("body-parser"),
 app         = express();
 
 // App Config
-
+mongoose.connect("mongodb://localhost/restful_blog_app", {useNerUrlParser: true});
 app.set("view engine", "ejs");
 app.use(express.static("public"));
 app.use(bodyParser.urlencoded({extended: true}));
