@@ -3,6 +3,7 @@ mongoose    = require("mongoose"),
 bodyParser  = require("body-parser"),
 app         = express();
 
+// App Config
 var url = "mongodb://localhost/restful_blog_app";
 mongoose.connect(url, { useNewUrlParser: true }, function(err, db){
   if(err){
@@ -16,16 +17,17 @@ app.set("view engine", "ejs");
 app.use(express.static("public"));
 app.use(bodyParser.urlencoded({ extended: true}));
 
+// Mongoose/Model Config
 var blogSchema = new mongoose.Schema({
    title: String,
    image: String,
    body: String,
    created: {type: Date, default: Date.now}
 });
-// title
-// image
-// body
-// created
+
+var Blog = mongoose.model("Blog", blogSchema);
+
+// Restful Routes
 
 app.listen(process.env.PORT, process.env.IP, function(){
     console.log("Server is Running");
