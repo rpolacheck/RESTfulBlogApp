@@ -95,7 +95,15 @@ app.put("/blogs/:id", function(req, res){
 //Delete Route
 
 app.delete("/blogs/:id", function(req, res){
-   res.send("You have reached the Destroy Route"); 
+   //Destroy blog
+   Blog.findByIdAndRemove(req.params.id, function(err){
+      if(err) {
+          res.redirect("/blogs");
+      } else {
+          res.redirect("/blogs");
+      }
+   });
+   //redirect
 });
 
 app.listen(process.env.PORT, process.env.IP, function(){
