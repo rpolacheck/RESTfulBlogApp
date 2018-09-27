@@ -91,6 +91,13 @@ app.put("/blogs/:id", function(req, res){
    });
 });
 
+
+//Delete Route
+
+app.delete("/blogs/:id", function(req, res){
+   res.send("You have reached the Destroy Route"); 
+});
+
 app.listen(process.env.PORT, process.env.IP, function(){
     console.log("Server is Running");
 });
